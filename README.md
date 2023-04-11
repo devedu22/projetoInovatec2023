@@ -20,10 +20,11 @@ Redux
 React Router
 Material UI
 Firebase
-Como contribuir
+## Como contribuir
+
 Se você deseja contribuir com este projeto, siga os seguintes passos:
 
-Crie um fork deste repositório.
+Crie um fork deste repositório.\n
 Crie uma nova branch com o nome da sua feature: git checkout -b feature/nova-feature.
 Faça as alterações desejadas e faça commit das mesmas: git commit -m "feat: adicionando nova feature".
 Faça push das alterações para o seu fork: git push origin feature/nova-feature.
