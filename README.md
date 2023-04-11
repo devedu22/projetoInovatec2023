@@ -1,15 +1,15 @@
-#Yuzu 2023
-#Yuzu Logo
+# Yuzu 2023
+# Yuzu Logo
 
 Este projeto é uma plataforma para gerenciamento de tarefas e projetos, desenvolvido pela equipe InovaTec para o ano de 2023. Ele foi construído com React e outras tecnologias modernas para proporcionar a melhor experiência possível para o usuário.
 
-##Como executar o projeto
+## Como executar o projeto
 Clone este repositório em sua máquina local.
 Instale as dependências com npm install.
 Execute o projeto em modo de desenvolvimento com npm start.
 Abra http://localhost:3000 em seu navegador para visualizar o projeto.
 
-##Funcionalidades
+## Funcionalidades
 
 Gerenciamento de tarefas e projetos
 Criação, edição e exclusão de tarefas e projetos
@@ -17,7 +17,7 @@ Lista de tarefas e projetos
 Filtragem e busca de tarefas e projetos
 Personalização de temas e cores
 
-##Tecnologias utilizadas
+## Tecnologias utilizadas
 
 React
 Redux
@@ -33,7 +33,7 @@ Faça as alterações desejadas e faça commit das mesmas: git commit -m "feat: 
 Faça push das alterações para o seu fork: git push origin feature/nova-feature.
 Crie uma pull request para este repositório.
 
-Autores
+## Autores
 
 Carlos Eduardo Cavalcante
 Carlesson Kalebe
