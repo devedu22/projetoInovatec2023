@@ -11,11 +11,7 @@ Abra http://localhost:3000 em seu navegador para visualizar o projeto.
 
 ## Funcionalidades
 
-Gerenciamento de tarefas e projetos
-Criação, edição e exclusão de tarefas e projetos
-Lista de tarefas e projetos
-Filtragem e busca de tarefas e projetos
-Personalização de temas e cores
+Gerenciamento de clínicas de saúde de pequeno e médio porte.
 
 ## Tecnologias utilizadas
 
