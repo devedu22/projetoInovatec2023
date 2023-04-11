@@ -1,5 +1,9 @@
 ## Projeto Yuzu - Inovatec 2023
 
+![! alt text (httpurltoimg png)](https://user-images.githubusercontent.com/81199710/231051635-717bcd41-7f47-48e7-8a5d-b30625185bba.png)
+
+
+
 A escolha do animal como logo pode parecer inusitada para um sistema de gerenciamento de atendimento de pacientes. No entanto, a capivara foi escolhida por representar algumas características que são importantes para o projeto Yuzu 2023.
 
 A capivara é um animal sociável, que vive em grupos e se relaciona bem com outros animais. Esse comportamento é importante para o nosso sistema, que tem como objetivo conectar pacientes, médicos e outros profissionais de saúde, criando uma rede de atendimento colaborativa e eficiente.
