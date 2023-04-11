@@ -1,7 +1,16 @@
 # Yuzu 2023
+
 # Yuzu Logo
 
-Este projeto é uma plataforma para gerenciamento de tarefas e projetos, desenvolvido pela equipe InovaTec para o ano de 2023. Ele foi construído com React e outras tecnologias modernas para proporcionar a melhor experiência possível para o usuário.
+A escolha do animal como logo pode parecer inusitada para um sistema de gerenciamento de atendimento de pacientes. No entanto, a capivara foi escolhida por representar algumas características que são importantes para o projeto Yuzu 2023.
+
+A capivara é um animal sociável, que vive em grupos e se relaciona bem com outros animais. Esse comportamento é importante para o nosso sistema, que tem como objetivo conectar pacientes, médicos e outros profissionais de saúde, criando uma rede de atendimento colaborativa e eficiente.
+
+Além disso, a capivara é um animal bastante adaptável e resistente, capaz de sobreviver em diferentes ambientes e situações. Essa característica representa a capacidade do nosso sistema de se adaptar às necessidades dos usuários, oferecendo soluções para diferentes demandas e condições.
+
+Por fim, a capivara é um animal que transmite uma sensação de calma e tranquilidade, o que é importante para um sistema de gerenciamento de atendimento de pacientes. Queremos que nossos usuários se sintam confortáveis e seguros ao utilizar nosso sistema, e a imagem da capivara ajuda a transmitir essa sensação.
+
+Em resumo, a escolha da capivara como logo para o Yuzu 2023 foi baseada em suas características sociáveis, adaptáveis e tranquilas, que representam valores importantes para o nosso sistema de gerenciamento de atendimento de pacientes.
 
 ## Como executar o projeto
 Clone este repositório em sua máquina local.
@@ -15,20 +24,9 @@ Gerenciamento de clínicas de saúde de pequeno e médio porte.
 
 ## Tecnologias utilizadas
 
-React
-Redux
-React Router
-Material UI
-Firebase
+
 ## Como contribuir
 
-Se você deseja contribuir com este projeto, siga os seguintes passos:
-
-Crie um fork deste repositório.\n
-Crie uma nova branch com o nome da sua feature: git checkout -b feature/nova-feature.
-Faça as alterações desejadas e faça commit das mesmas: git commit -m "feat: adicionando nova feature".
-Faça push das alterações para o seu fork: git push origin feature/nova-feature.
-Crie uma pull request para este repositório.
 
 ## Autores
 
