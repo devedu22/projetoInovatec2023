@@ -1,6 +1,6 @@
 # Yuzu 2023
 
-(https://uploaddeimagens.com.br/imagens/qi6l4yI)
+![alt text]([http://url/to/img.png](https://uploaddeimagens.com.br/imagens/qi6l4yI))
 
 A escolha do animal como logo pode parecer inusitada para um sistema de gerenciamento de atendimento de pacientes. No entanto, a capivara foi escolhida por representar algumas características que são importantes para o projeto Yuzu 2023.
 
