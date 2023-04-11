@@ -1,6 +1,4 @@
-# Yuzu 2023
-![alt text](http://url/to/img.png)
-![alt text](http://url/to/img.png](https://uploaddeimagens.com.br/imagens/qi6l4yI))
+## Projeto Yuzu - Inovatec 2023
 
 A escolha do animal como logo pode parecer inusitada para um sistema de gerenciamento de atendimento de pacientes. No entanto, a capivara foi escolhida por representar algumas características que são importantes para o projeto Yuzu 2023.
 
