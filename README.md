@@ -32,10 +32,10 @@ Gerenciamento de clínicas de saúde de pequeno e médio porte.
 
 ## Autores
 
-Carlos Eduardo Cavalcante
-Carlesson Kalebe
-Heluzio Souza
-Analia Vitória
+Carlos Eduardo Cavalcante;
+Carleson Kalebe;
+Heluzio Souza;
+Analia Vitória;
 
 ### Licença
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais informações.
