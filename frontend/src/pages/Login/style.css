@@ -20,13 +20,28 @@
 }
 
 .logo {
-  position: absolute;
-  top: 2px;
-  left: 20%;
-  transform: translateX(-10%);
-  max-width: 50%;
+  display: block;
+  margin: 0 auto;
+  width: 30%;
+  max-width: 400px;
   height: auto;
 }
+/* estilos para smartphones */
+@media (max-width: 767px) {
+  .logo {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* estilos para tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .logo {
+    max-width: 80%;
+    width: 80%;
+  }
+}
+
 
 .logo2{
   position: absolute;
@@ -36,6 +51,7 @@
   max-width: 40%;
   height: auto;
 }
+
 
 
 
@@ -84,7 +100,7 @@ h2 {
 
 .links-container a {
   font-size: 14px;
-  color: #008080;
+  color: #017e7e;
   text-decoration: underline;
   margin-left: 10px;
 }
@@ -93,7 +109,7 @@ h2 {
   display: flex;
   align-items: center;
   margin-top: 0.5rem;
-  color:rgb(7, 131, 138);
+  color:rgb(0, 119, 126);
   margin-bottom: 1rem;
 }
 
@@ -105,7 +121,6 @@ h2 {
 .social-login a {
   margin-right: 1rem;
   font-size: 1.5rem;
-  margin-right: 1rem;
 }
 
 .font-poppins {

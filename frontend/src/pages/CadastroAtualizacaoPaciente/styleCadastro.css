@@ -1,0 +1,179 @@
+
+
+.agendamento_subarea_info{
+   display: grid;
+   grid-template-columns: auto auto;
+}
+
+.cadastrar_container{
+    display: flex;
+    align-items: center;
+    flex-direction: row ;
+}
+
+.cadastrar_container .cadastrar_title{
+    font-size: 42px;
+    display: flex;
+    color: #0DA2A9;
+   margin-left: 16px;
+}
+
+.cadastrar_container .FaUserPlus{
+    color: #0DA2A9;
+}
+
+.infoPessoais_container .infoPessoais_title{
+   font-size: 28px;
+   display: flex;
+   color: #0DA2A9;
+   justify-content: center;
+}
+
+.nome_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    
+ }
+
+ .nome_container .nome_title{
+    padding-right: 16px;
+ }
+
+ .dtdenascimento_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+ }
+
+ .dtdenascimento_container .dtdenascimento_title{
+    padding-right: 16px;
+ }
+
+ .sexo_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+ }
+
+ .sexo_container .sexo_title{
+    padding-right: 16px;
+ }
+
+ .cpf_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    
+ }
+
+ .cpf_container .cpf_title{
+    padding-right: 16px;
+ }
+
+
+ .rg_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    
+ }
+
+ .rg_container .rg_title{
+    padding-right: 16px;
+ }
+
+ .naturalidade_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+ }
+
+ .naturalidade_container .naturalidade_title{
+    padding-right: 16px;
+ }
+
+ .estadocivil_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+ }
+
+ .estadocivil_container .estadocivil_title{
+    padding-right: 16px;
+ }
+
+ .telefone_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+ }
+
+ .telefone_container .telefone_title{
+    padding-right: 16px;
+ }
+
+
+
+.naturalidade_container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+ .cep_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+ }
+
+ .cep_container .cep_title{
+    padding-right: 12px;
+ }
+
+ .email_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+ }
+
+ .email_container .email_title{
+    padding-right: 12px;
+ }
+
+ .rua_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+ }
+
+ .rua_container .rua_title{
+    padding-right: 12px;
+ }
+
+ .numero_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+ }
+
+ .numero_container .numero_title{
+    padding-right: 12px;
+ }
+
+ .bairro_container{
+    align-items: center;
+    display: flex;
+    width: 100%;
+ }
+
+ .bairro_container .bairro_title{
+    padding-right: 12px;
+ }
+
+ .button_container{
+   align-items: center;
+   display: flex;
+   justify-content: center;
+ }
+

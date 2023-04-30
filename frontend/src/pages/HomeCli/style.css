@@ -1,0 +1,147 @@
+#homecli_container {
+    display: grid;
+    background: #ffffff;
+}
+
+/* Define a barra lateral */
+.sidebar {
+    position: absolute;
+    width: 385px;
+    height: 100%;
+    background: #ffffff;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+    box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+}
+
+.sidebar label {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    display: block;
+    font-size: 18px;
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.sidebar a:hover {
+    color: #319795;
+    border-color: #319795;
+}
+
+.sidebar.visible {
+    transform: translateX(0);
+}
+
+
+
+#homecli_title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+    background-color: #319795;
+    width: 100%;
+    height: 100px;
+
+}
+
+#homecli_title_text_App {
+    font-size: 30px;
+    align-items: center;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#homecli_title_text_User {
+    font-size: 16px;
+    align-items: center;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+
+
+/* Define o botão para mostrar/esconder a barra lateral */
+.homecli_toggle-button {
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 14px;
+    margin-right: 50px;
+    transform: translateY(-50%);
+    padding: 10px;
+    border-radius: 5px;
+    background: #2a7e7d;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.15);
+    border-width: 0cm;
+}
+
+#homecli_area {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 90px;
+    row-gap: 40px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.homecli_area_button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 210px;
+    height: 150px;
+    padding: 0 20px;
+    border-radius: 10px;
+    background-color: #319795ce;
+    row-gap: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid #319795;
+}
+
+.homecli_area_button:hover {
+    background-color: #ffffff;
+    color: #319795;
+}
+
+.homecli_area_button:focus {
+    outline: none;
+}
+
+.homecli_area_button svg {
+    margin-bottom: 10px;
+}
+
+.homecli_area_button span {
+    text-align: center;
+    display: block;
+}

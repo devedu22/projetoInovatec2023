@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { FaUser, FaLock, FaFacebook, FaGoogle, FaApple } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import './style.css';
 import tw from 'twin.macro';
 import 'fontsource-poppins';
 import 'typeface-poppins';
+import api from '../../services/api';
+import { Alert, AlertTitle } from '@mui/material';
+
+
 
 const Container = tw.div`flex flex-wrap justify-center items-center h-screen bg-gray-50 dark:bg-gray-900`;
 const ContainerL = tw.div`flex-1 flex items-center justify-center`;
@@ -14,28 +19,57 @@ const Input = tw.input`shadow appearance-none border rounded w-full py-2 px-3 te
 const FormWrapper = tw.div`w-full lg:w-9/12`;
 const UserInput = tw(Input)`block w-full mb-7 pl-10`;
 const PasswordInput = tw(Input)`block w-full mb-6 pl-10`;
-const Title = tw.h2`font-bold text-3xl text-gray-800 mb-5 font-sans`;
+
 
 
 
 export function Login() {
-  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
 
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // lógica de autenticação aqui
+
+    try {
+      const response = await api.post('/logarUsuario', {
+        email,
+        password,
+      });
+
+      // aqui você pode armazenar o token de autenticação que recebeu do backend
+      // e redirecionar o usuário para a homepage
+      console.log(response.data);
+      setSuccess('Logado com Sucesso');
+      // Esconde a mensagem de sucesso após 5 segundos (5000 milissegundos)
+      setTimeout(() => {
+        setSuccess('');
+        navigate('/homepage');
+      }, 500);
+
+
+
+    } catch (error) {
+      setError('Email ou senha inválidos');
+      setTimeout(() => {
+        setError('');
+      }, 500)
+    }
   };
+
 
   return (
     <div>
@@ -43,8 +77,22 @@ export function Login() {
         <ContainerL>
           <FormWrapper style={{ width: "100%", maxWidth: "600px" }}>
             <FormContainer className="form-container" style={{ padding: "2rem" }}>
-            <img src="/yuzu2.png" alt="Yuzu" className="logo" style={{ maxWidth: "100%" }} />
-              <Title>Login</Title>
+              {error && (
+                <Alert severity="error" onClose={() => setError('')}>
+                  <AlertTitle>Erro</AlertTitle>
+                  {error}
+                </Alert>
+              )}
+
+              {success && (
+                <Alert severity="success" onClose={() => setSuccess('')}>
+                  <AlertTitle>Sucesso</AlertTitle>
+                  {success}
+                </Alert>
+              )}
+              
+              <img src="/yuzu2.png" alt="Yuzu" className="logo" style={{ maxWidth: "150%" }} />
+          
               <Form onSubmit={handleSubmit} className="form">
 
                 <div className="input-container">
@@ -52,17 +100,16 @@ export function Login() {
                   <div className="icon-input-container">
                     <FaUser className="icon" style={{ color: "#ccc" }} />
                     <UserInput
-                      type="text"
-                      id="username"
-                      name="username"
-                      value={username}
-                      onChange={handleUsernameChange}
-                      placeholder='Usuário'
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={email}
+                      onChange={handleEmailChange}
+                      placeholder='E-mail'
                       required
                     />
                   </div>
                 </div>
-
                 <div className="input-container">
                   <div className="icon-input-container">
                     <FaLock className="icon" style={{ color: "#ccc" }} />
@@ -78,11 +125,11 @@ export function Login() {
                   </div>
                 </div>
                 <div className="button-container">
-                  <Button type="submit" style={{ boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.25)', backgroundColor: '#008080' }}>Entrar</Button>
+                  <Button type="submit" style={{ boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.25)', backgroundColor: '#008080' }} onClick={handleSubmit}>Entrar</Button>
                 </div>
                 <div className="links-container">
-                  <a href="a">Primeiro acesso</a>
-                  <a href="a">Recuperar senha</a>
+                  <a href="/primeiroacesso">Primeiro acesso</a>
+                  <a href="/recuperasenha">Recuperar senha</a>
                 </div>
                 <div className="social-login">
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
