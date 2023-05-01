@@ -24,6 +24,11 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    acessLevel:{ // Campo para setar nível de acesso
+        type: String,
+        required: true,
+        maxlength: 3
+    },
     createdAt:{
         type: Date,
         default: Date.now

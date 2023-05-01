@@ -8,7 +8,7 @@ class AuthController {
 
     static async register(req, res) {
         try {
-            const { email, cpf } = req.body;
+            const { email, cpf, acessLevel } = req.body;
     
             // Validando CPF
             if (cpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
@@ -17,7 +17,7 @@ class AuthController {
                     message: "CPF inválido. O CPF deve ter 11 caracteres."
                 });
             }
-    
+            
             // Verifica se o usuário já existe
             if (await UserModel.findOne({ email })) {
                 return res.status(400).json({
@@ -33,6 +33,16 @@ class AuthController {
                     message: "CPF informado já vinculado à um usuário cadastrado!"
                 });
             }
+
+            // Adicionando validador de nível de acesso do usuário
+            if (!["ADM", "USR", "MED"].includes(acessLevel)){
+                return res.status(400).json({
+                    error: true,
+                    message: "Erro ao cadastrar usuário. O nível de acesso deve ser Administrador, Usuário ou Médico"
+                })
+            }
+
+
             // Cria um novo usuário
             const User = await UserModel.create(req.body);
     
