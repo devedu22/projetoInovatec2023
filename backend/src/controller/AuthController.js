@@ -35,10 +35,10 @@ class AuthController {
             }
 
             // Adicionando validador de nível de acesso do usuário
-            if (!["ADM", "USR", "MED"].includes(acessLevel)){
+            if (!["ADM", "USR", "MED"].includes(acessLevel)){ 
                 return res.status(400).json({
                     error: true,
-                    message: "Erro ao cadastrar usuário. O nível de acesso deve ser Administrador, Usuário ou Médico"
+                    message: "Erro ao cadastrar usuário. O nível de acesso deve ser Administrador(ADM), Usuário(USR) ou Médico(MED)"
                 })
             }
 
