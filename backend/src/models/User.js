@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    acessLevel:{ // Campo para setar nível de acesso
+    accessLevel:{ // Campo para setar nível de acesso
         type: String,
         required: true,
         maxlength: 3

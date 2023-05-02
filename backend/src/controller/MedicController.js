@@ -85,7 +85,7 @@ class MedicController {
 
     static async delete (req, res) {
         try {
-            const { name, crm } = req.body;
+            const { crm } = req.body;
     
             // busca um médico no banco de dados com base no name e CRM fornecidos
             const medic = await MedicModel.findOne({ crm });
