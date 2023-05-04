@@ -1,22 +1,32 @@
 const mongoose = require('../database/index'); // importando a estrutura da conexão com o MongoDb
 
 // Definindo o schema (modelo) do medicamento com seus respectivos campos
-const RemedySchema = new mongoose.Schema({
-    name: {
+const SchedullingSchema = new mongoose.Schema({
+    doctorCrm: {
         type: String,
         required: true,
     },
-    type: {
+    patientCpf: {
         type: String,
         required: true,
     },
-    dosage: {
+    procedureCode:{
         type: String,
-        required: true,
+        required: true
     },
-    form: {
+    appointmentDate:{
+        type: Date,
+        required: true
+    },
+    hourInit:{
         type: String,
         required: true,
+        match: /^\d{2}:\d{2}$/
+    },
+    hourEnd:{
+        type: String,
+        required: true,
+        match: /^\d{2}:\d{2}$/
     },
     createdAt:{
         type: Date,
@@ -30,7 +40,7 @@ const RemedySchema = new mongoose.Schema({
 });
 
 // Criando o modelo "User" com base no schema definido acima
-const Remedy = mongoose.model("Remedy", RemedySchema);
+const Schedulling = mongoose.model("Schedulling", SchedullingSchema);
 
 // Exportando o modelo "User" para que possa ser utilizado em outros arquivos do projeto
-module.exports = Remedy;
+module.exports = Schedulling;
