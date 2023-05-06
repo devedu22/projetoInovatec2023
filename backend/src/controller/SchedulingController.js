@@ -7,15 +7,15 @@ class SchedulingController {
 
     static async register(req, res) {
             try{
-                const {crm , cpf, procedureCode} = req.body;
-                if (cpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
+                const {doctorCrm , patientCpf, procedureCode} = req.body;
+                if (patientCpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
                     return res.status(400).json({
                         error: true,
                         message: "CPF inválido. O CPF deve ter 11 caracteres."
                     });
                 }
                 // Verifica se o CPF desse paciente já existe
-                const patient = await PatientModel.findOne({ cpf })
+                const patient = await PatientModel.findOne({ cpf : patientCpf })
                 if (!patient) {
                     return res.status(400).json({
                         error: true,
@@ -23,7 +23,7 @@ class SchedulingController {
                     });
                 }
 
-                const medic = await MedicModel.findOne({ crm })
+                const medic = await MedicModel.findOne({ crm : doctorCrm })
                 if (!medic) {
                     return res.status(400).json({
                         error: true,
@@ -31,7 +31,8 @@ class SchedulingController {
                     });
                 }
                 
-                const procedure = await ProcedureModel.findOne({ procedureCode })
+                const procedure = await ProcedureModel.findOne({ cod : procedureCode})
+
                 if (!procedure) {
                     return res.status(400).json({
                         error: true,
@@ -39,16 +40,17 @@ class SchedulingController {
                     });
                 }
                 
-                const scheduling = await SchedulingModel.create(req.body); //Se tudo der certo, cadastra o médico
-    
+ 
+                const scheduling = await SchedulingModel.create(req.body); 
+
                 return res.json({
                     error: false,
                     message: "Agendamento cadastrado com sucesso!",
-                    data: scheduling // Retorna o médico criado em um objeto
-                });
+                    data: scheduling // Retorna o Agendamento criado em um objeto
+                });               
                 
             } catch{
-                return res.status(200)
+                return res.status(500)
             }
     }
 }
