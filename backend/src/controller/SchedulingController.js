@@ -7,7 +7,7 @@ class SchedulingController {
 
     static async register(req, res) {
             try{
-                const {doctorCrm , patientCpf, procedureCode} = req.body;
+                const {doctorCrm , patientCpf, procedureCode, appointmentDate, hourInit} = req.body;
                 if (patientCpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
                     return res.status(400).json({
                         error: true,
@@ -39,14 +39,25 @@ class SchedulingController {
                         message: "codigo informado não está vinculado à um procedimento cadastrado!"
                     });
                 }
- 
-                const scheduling = await SchedulingModel.create(req.body); 
 
-                return res.json({
-                    error: false,
-                    message: "Agendamento cadastrado com sucesso!",
-                    data: scheduling // Retorna o Agendamento criado em um objeto
-                });               
+                const schedulingExisting = await SchedulingModel.findOne({ doctorCrm, appointmentDate, hourInit })
+                
+                console.log(schedulingExisting)
+
+                if (!schedulingExisting) {
+                    const scheduling = await SchedulingModel.create(req.body); 
+                    return res.json({
+                        error: false,
+                        message: "Agendamento cadastrado com sucesso!",
+                        data: scheduling // Retorna o Agendamento criado em um objeto
+                    });   
+                }
+                
+                return res.status(400).json({
+                    error: true,
+                    message: "Scheduling already exists!"
+                });
+                     
                 
             } catch{
                 return res.status(500)
