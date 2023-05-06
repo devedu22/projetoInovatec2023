@@ -6,6 +6,8 @@ const PatientController = require('../controller/PatientController')
 const ProcedureController = require('../controller/ProcedureController')
 const RemedyController = require('../controller/RemedyController')
 const MedicController = require('../controller/MedicController')
+const SchedulingController = require('../controller/SchedulingController')
+
 const routes = express.Router();
 
 
@@ -35,5 +37,7 @@ routes.post('/registrarMedico',MedicController.register) //Rota para criar Medic
 routes.put('/atualizarMedico',MedicController.update) //Rota para atualizar Medico
 routes.delete('/deletarMedico',MedicController.delete) //Rota para atualizar Medico
 
+// Scheduling
+routes.post('/createScheduling',SchedulingController.register)
 
 module.exports = routes;

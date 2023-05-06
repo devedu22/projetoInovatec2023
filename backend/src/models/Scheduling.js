@@ -43,4 +43,4 @@ const SchedulingSchema = new mongoose.Schema({
 const Scheduling = mongoose.model("Scheduling", SchedulingSchema);
 
 // Exportando o modelo "User" para que possa ser utilizado em outros arquivos do projeto
-export {Scheduling};
+module.exports = Scheduling;

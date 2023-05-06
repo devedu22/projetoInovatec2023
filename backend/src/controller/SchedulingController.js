@@ -1,7 +1,8 @@
 const ProcedureModel = require('../models/Procedure')
 const MedicModel = require('../models/Medic')
 const PatientModel = require('../models/Patient')
-import { Scheduling } from ('../models/Scheduling') 
+const SchedulingModel = require('../models/Scheduling')
+
 class SchedulingController {
 
     static async register(req, res) {
@@ -38,7 +39,7 @@ class SchedulingController {
                     });
                 }
                 
-                const scheduling = await Scheduling.create(req.body); //Se tudo der certo, cadastra o médico
+                const scheduling = await SchedulingModel.create(req.body); //Se tudo der certo, cadastra o médico
     
                 return res.json({
                     error: false,
@@ -46,10 +47,10 @@ class SchedulingController {
                     data: scheduling // Retorna o médico criado em um objeto
                 });
                 
-            }catch{
+            } catch{
+                return res.status(200)
             }
-        }
     }
-
+}
 
 module.exports = SchedulingController
