@@ -29,12 +29,12 @@ const MedicSchema = new mongoose.Schema({
     dossierInit:{
         type: String,
         required: true,
-        match: /^\d{2}:\d{2}$/
+        match: /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/, // formatando expressão regular
     },
     dossierEnd:{
         type: String,
         required: true,
-        match: /^\d{2}:\d{2}$/
+        match: /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,  // formatando expressão regular
     },
     createdAt:{
         type: Date,
