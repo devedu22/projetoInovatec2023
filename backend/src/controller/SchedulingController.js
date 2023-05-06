@@ -39,7 +39,6 @@ class SchedulingController {
                         message: "codigo informado não está vinculado à um procedimento cadastrado!"
                     });
                 }
-                
  
                 const scheduling = await SchedulingModel.create(req.body); 
 
