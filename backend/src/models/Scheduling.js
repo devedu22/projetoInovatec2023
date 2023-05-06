@@ -1,7 +1,7 @@
 const mongoose = require('../database/index'); // importando a estrutura da conexão com o MongoDb
 
 // Definindo o schema (modelo) do medicamento com seus respectivos campos
-const SchedullingSchema = new mongoose.Schema({
+const SchedulingSchema = new mongoose.Schema({
     doctorCrm: {
         type: String,
         required: true,
@@ -40,7 +40,7 @@ const SchedullingSchema = new mongoose.Schema({
 });
 
 // Criando o modelo "User" com base no schema definido acima
-const Schedulling = mongoose.model("Schedulling", SchedullingSchema);
+const Scheduling = mongoose.model("Scheduling", SchedulingSchema);
 
 // Exportando o modelo "User" para que possa ser utilizado em outros arquivos do projeto
-module.exports = Schedulling;
+export {Scheduling};

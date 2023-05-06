@@ -100,8 +100,6 @@ class ProcedureController {
             });
         }
     }
-
-
 }
 
 module.exports = ProcedureController
