@@ -10,7 +10,6 @@ const SchedulingController = require('../controller/SchedulingController')
 
 const routes = express.Router();
 
-
 routes.get('/admin/usuarios',authMiddleware,AdminController.getUsers) //Rota para  consulta de todos usuarios, com token no header
 routes.get('/admin/patient',authMiddleware,AdminController.getPatient) //Rota para  consulta de todos pacientes, com token no header
 routes.get('/admin/Speciality',authMiddleware,AdminController.getSpeciality) //Rota para  consulta de todos procedimentos, com token no header
@@ -42,5 +41,6 @@ routes.delete('/deletarMedico',MedicController.delete) //Rota para atualizar Med
 // Scheduling
 routes.post('/listSchedule',SchedulingController.verifyScheduleDoctor) 
 routes.post('/createScheduling',SchedulingController.register)
+routes.post('/filterSchedule',SchedulingController.filterHoursDoctor)
 
 module.exports = routes;

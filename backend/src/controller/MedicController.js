@@ -44,6 +44,15 @@ class MedicController {
                 });
             }
 
+            function convertTo24Hour(time) {
+                const [hour, minute, period] = time.split(/[:\s]/); // divide o horário em hora, minuto e período (AM / PM)
+                const hourInt = parseInt(hour, 10); // converte a hora em um número inteiro
+                const periodOffset = period.toUpperCase() === 'PM' ? 12 : 0; // adiciona um offset de 12 horas se o período for PM
+                const hour24 = (hourInt % 12) + periodOffset; // converte a hora para o formato de 24 horas
+                const formattedHour = hour24.toString().padStart(2, '0'); // formata a hora para ter dois dígitos e adiciona um zero à esquerda, se necessário
+                return `${formattedHour}:${minute}`;
+              }
+
             async function hoursForService(start, end) {
 
                 let dateInit = "2000-01-01" + " "+ start + ":" + "00"
@@ -55,8 +64,9 @@ class MedicController {
                 let final = new Date(dateEnd)
 
                 while (current <= final) {
-                  const milestone = current.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                  milestones.push(milestone);
+                  const milestone = current.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}, { hour12: false });
+                  let milestone_formated = convertTo24Hour(milestone)
+                  milestones.push(milestone_formated);
                   current.setMinutes(current.getMinutes() + interval);
                 }
                 return milestones;
