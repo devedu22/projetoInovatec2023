@@ -10,10 +10,10 @@ const SchedulingSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    procedureCode:{
-        type: String,
-        required: true
-    },
+    // SpecialityCode:{
+    //     type: String,
+    //     required: true
+    // },
     appointmentDate:{
         type: Date,
         required: true

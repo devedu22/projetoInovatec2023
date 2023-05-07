@@ -4,10 +4,34 @@ const PatientModel = require('../models/Patient')
 const SchedulingModel = require('../models/Scheduling')
 
 class SchedulingController {
+    static async verifyScheduleDoctor(req, res){
+        try{
+            const { doctorCrm, appointmentDate } = req.body;
+            const scheduling = await SchedulingModel.find({ doctorCrm, appointmentDate })
+
+            if (scheduling.length == 0) {
+                return res.status(400).json({
+                    error: true,
+                    message: "Medico com agenda Vazia!"
+                });
+            }
+            return res.status(200).json({
+                error: false,
+                message: "Agenda:",
+                data:scheduling
+            })
+        }catch{
+            console.error(err);
+            return res.status(500).json({
+                error: true,
+                message: "Ocorreu um erro ao buscar a agenda do médico solicitado. Por favor, verifique novamente os campos."
+            });
+        }
+    }
 
     static async register(req, res) {
             try{
-                const {doctorCrm , patientCpf, SpecialityCode, appointmentDate, hourInit} = req.body;
+                const {doctorCrm , patientCpf, appointmentDate, hourInit} = req.body;
                 if (patientCpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
                     return res.status(400).json({
                         error: true,
@@ -31,18 +55,16 @@ class SchedulingController {
                     });
                 }
                 
-                const Speciality = await Speciality.findOne({ cod : SpecialityCode})
+                // const Speciality = await Speciality.findOne({ cod : SpecialityCode})
 
-                if (!Speciality) {
-                    return res.status(400).json({
-                        error: true,
-                        message: "codigo informado não está vinculado à um procedimento cadastrado!"
-                    });
-                }
+                // if (!Speciality) {
+                //     return res.status(400).json({
+                //         error: true,
+                //         message: "codigo informado não está vinculado à um procedimento cadastrado!"
+                //     });
+                // }
 
                 const schedulingExisting = await SchedulingModel.findOne({ doctorCrm, appointmentDate, hourInit })
-                
-                console.log(schedulingExisting)
 
                 if (!schedulingExisting) {
                     const scheduling = await SchedulingModel.create(req.body); 
@@ -55,12 +77,17 @@ class SchedulingController {
                 
                 return res.status(400).json({
                     error: true,
-                    message: "Scheduling already exists!"
+                    message: "Scheduling already exists!",
+                    data: schedulingExisting
                 });
                      
                 
-            } catch{
-                return res.status(500)
+            }catch{
+                console.error(err);
+                return res.status(500).json({
+                    error: true,
+                    message: "Ocorreu um erro ao cadastrar o Agendamento. Por favor, verifique novamente os campos."
+                });
             }
     }
 }

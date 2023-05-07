@@ -38,6 +38,7 @@ routes.put('/atualizarMedico',MedicController.update) //Rota para atualizar Medi
 routes.delete('/deletarMedico',MedicController.delete) //Rota para atualizar Medico
 
 // Scheduling
+routes.post('/listSchedule',SchedulingController.verifyScheduleDoctor) 
 routes.post('/createScheduling',SchedulingController.register)
 
 module.exports = routes;
