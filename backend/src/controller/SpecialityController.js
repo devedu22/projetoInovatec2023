@@ -20,7 +20,7 @@ class SpecialityController {
                 });
             }
 
-            const procedure = await SpecialityModel.create(req.body);
+            const Speciality = await SpecialityModel.create(req.body);
     
             return res.json({
                 error: false,
