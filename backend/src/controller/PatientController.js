@@ -80,7 +80,7 @@ class PatientController {
 
     static async delete (req, res) {
         try {
-            const { name, email, cpf } = req.body;
+            const { cpf } = req.body;
     
             // busca um paciente no banco de dados com base no email e cpf fornecidos
             const patient = await PatientModel.findOne({ cpf });
