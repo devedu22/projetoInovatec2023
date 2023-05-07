@@ -35,14 +35,14 @@ class AdminController {
 
   static async getSpeciality(req, res) {
     try {
-      const patient = await SpecialityModel.find({});
-      res.status(200).json(patient);
+      const Speciality = await SpecialityModel.find({});
+      res.status(200).json(Speciality);
 
     } catch (error) {
       console.error(error);
       res.status(500).json({
         error: true,
-        message: 'Ocorreu um erro ao buscar os procedimentos. Por favor, tente novamente mais tarde.'
+        message: 'Ocorreu um erro ao buscar as Especialidades. Por favor, tente novamente mais tarde.'
       });
     }
   }

@@ -12,11 +12,6 @@ const SpecialitySchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    // duration: { // Adicionando duração, sociltada pelo frontend
-    //     type: String,
-    //     match: /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/, 
-    //     required: true
-    // },
     createdAt:{
         type: Date,
         default: Date.now

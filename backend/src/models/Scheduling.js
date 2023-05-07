@@ -1,6 +1,7 @@
 const mongoose = require('../database/index'); // importando a estrutura da conexão com o MongoDb
 
 // Definindo o schema (modelo) do Scheduling com seus respectivos campos
+
 const SchedulingSchema = new mongoose.Schema({
     doctorCrm: {
         type: String,
@@ -10,10 +11,6 @@ const SchedulingSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    // SpecialityCode:{
-    //     type: String,
-    //     required: true
-    // },
     appointmentDate:{
         type: Date,
         required: true

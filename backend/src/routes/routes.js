@@ -28,6 +28,8 @@ routes.delete('/deletarPaciente',PatientController.delete) //Rota para atualizar
 routes.post('/registrarEspecialidade',SpecialityController.register) //Rota para criar procedimento
 routes.put('/atualizarEspecialidade',SpecialityController.update) //Rota para atualizar procedimento
 routes.delete('/deletarEspecialidade',SpecialityController.delete) //Rota para atualizar procedimento
+routes.post('/buscarMedicos',SpecialityController.findDoctorBySpeciality) //Rota para atualizar procedimento
+
 
 routes.post('/registrarRemedio',RemedyController.register) //Rota para criar medicamento
 routes.put('/atualizarRemedio',RemedyController.update) //Rota para atualizar medicamento

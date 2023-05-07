@@ -1,6 +1,33 @@
 const SpecialityModel = require('../models/Speciality')
+const DoctorModel = require('../models/Medic')
 
 class SpecialityController {
+    static async findDoctorBySpeciality(req,res){
+        try {
+            const { cod } = req.body;
+            const medics = await DoctorModel.find({ speciality : cod });
+
+            if(medics.length ==  0){
+                return res.json({
+                    error: true,
+                    message: "Nenhum médico encontrado para essa especialidade!",
+                    data: medics // Retorna o procedimento criado em um objeto
+                });
+            }
+            return res.json({
+                error: false,
+                message: "Médicos encontrados com sucesso!",
+                data: medics // Retorna os medicos encontrado em um objeto
+            });
+            
+        }catch (err) { //Caso dê erro, ele retorna outro objeto de erro
+            console.error(err);
+            return res.status(500).json({
+                error: true,
+                message: "Ocorreu um erro ao buscar o procedimento. Por favor, verifique novamente os campos."
+            });
+        }
+    }
 
     static async register(req, res) {
         try {
