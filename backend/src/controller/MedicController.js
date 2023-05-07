@@ -1,10 +1,11 @@
 const MedicModel = require('../models/Medic')
+const SpecialityModel = require('../models/Speciality')
 
 class MedicController {
 
     static async register(req, res) {
         try {
-            const {crm , cpf, email, especialized, dossierInit, dossierEnd} = req.body;
+            const { name, crm , cpf, email, speciality, dossierInit, dossierEnd } = req.body;
 
             if (cpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
                 return res.status(400).json({
@@ -33,38 +34,55 @@ class MedicController {
                     message: "CPF informado já vinculado à um médico cadastrado!"
                 });
             }
+            
+            const specialityResponse = await SpecialityModel.findOne({ cod : speciality })
+
+            if (!specialityResponse) {
+                return res.status(400).json({
+                    error: true,
+                    message: "Especialidade informada não está cadastrada!"
+                });
+            }
 
             async function hoursForService(start, end) {
+
+                let dateInit = "2000-01-01" + " "+ start + ":" + "00"
+                let dateEnd = "2000-01-01" + " "+ end + ":" + "00"
+
                 const milestones = [];
-                const interval = 30; 
-                let current = new Date(start);
-              
-                while (current <= end) {
+                const interval = 15; 
+                let current = new Date(dateInit);
+                let final = new Date(dateEnd)
+
+                while (current <= final) {
                   const milestone = current.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
                   milestones.push(milestone);
                   current.setMinutes(current.getMinutes() + interval);
                 }
-              
                 return milestones;
             }
 
-            medicHours = await hoursForService(dossierInit, dossierEnd);
+            const hoursService = await hoursForService(dossierInit, dossierEnd);
  
-
-            const medicBody = await MedicModel.create(req.body); 
-            const medic =  {
-                medicBody,
-                medicHours
+            const medicFinal =  {
+                name,
+                crm, 
+                cpf, 
+                email, 
+                speciality, 
+                dossierInit, 
+                dossierEnd,
+                hoursService
             }
 
+            const medic = await MedicModel.create(medicFinal)
             console.log(medic)
-            //Se tudo der certo, cadastra o médico
-    
-            // return res.json({
-            //     error: false,
-            //     message: "Médico cadastrado com sucesso!",
-            //     data: medic // Retorna o médico criado em um objeto
-            // });
+            ////////Se tudo der certo, cadastra o médico
+            return res.json({
+                error: false,
+                message: "Médico cadastrado com sucesso!",
+                data: medic // Retorna o médico criado em um objeto
+            });
         } catch (err) { //Caso dê erro, ele retorna outro objeto de erro
             console.error(err);
             return res.status(500).json({

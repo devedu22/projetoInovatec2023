@@ -13,7 +13,7 @@ const routes = express.Router();
 
 routes.get('/admin/usuarios',authMiddleware,AdminController.getUsers) //Rota para  consulta de todos usuarios, com token no header
 routes.get('/admin/patient',authMiddleware,AdminController.getPatient) //Rota para  consulta de todos pacientes, com token no header
-routes.get('/admin/Procedimento',authMiddleware,AdminController.getSpeciality) //Rota para  consulta de todos procedimentos, com token no header
+routes.get('/admin/Speciality',authMiddleware,AdminController.getSpeciality) //Rota para  consulta de todos procedimentos, com token no header
 routes.get('/admin/Remedio',authMiddleware,AdminController.getRemedy) //Rota para  consulta de todos medicamentos, com token no header
 routes.get('/admin/Medico',authMiddleware,AdminController.getMedic) //Rota para  consulta de todos Medicos, com token no header
 
@@ -25,9 +25,9 @@ routes.post('/registrarPaciente',PatientController.register) //Rota para criar p
 routes.put('/atualizarPaciente',PatientController.update) //Rota para atualizar paciente
 routes.delete('/deletarPaciente',PatientController.delete) //Rota para atualizar paciente
 
-routes.post('/registrarProcedimento',SpecialityController.register) //Rota para criar procedimento
-routes.put('/atualizarProcedimento',SpecialityController.update) //Rota para atualizar procedimento
-routes.delete('/deletarProcedimento',SpecialityController.delete) //Rota para atualizar procedimento
+routes.post('/registrarEspecialidade',SpecialityController.register) //Rota para criar procedimento
+routes.put('/atualizarEspecialidade',SpecialityController.update) //Rota para atualizar procedimento
+routes.delete('/deletarEspecialidade',SpecialityController.delete) //Rota para atualizar procedimento
 
 routes.post('/registrarRemedio',RemedyController.register) //Rota para criar medicamento
 routes.put('/atualizarRemedio',RemedyController.update) //Rota para atualizar medicamento
