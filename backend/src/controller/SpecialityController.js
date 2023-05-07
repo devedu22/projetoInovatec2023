@@ -63,7 +63,7 @@ class SpecialityController {
         }
     }
 
-    static async update (req, res) {
+    static async update(req, res) {
         try {
             const { name, cod } = req.body;
 
