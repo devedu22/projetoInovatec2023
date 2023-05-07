@@ -1,6 +1,6 @@
 const UserModel = require('../models/User');
 const PatientModel = require('../models/Patient');
-const ProceduretModel = require('../models/Procedure');
+const SpecialityModel = require('../models/Speciality');
 const RemedyModel = require('../models/Remedy');
 const MedicModel = require('../models/Medic');
 
@@ -33,9 +33,9 @@ class AdminController {
     }
   }
 
-  static async getProcedure(req, res) {
+  static async getSpeciality(req, res) {
     try {
-      const patient = await ProceduretModel.find({});
+      const patient = await SpecialityModel.find({});
       res.status(200).json(patient);
 
     } catch (error) {

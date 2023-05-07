@@ -22,8 +22,8 @@ const MedicSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    especialized:{
-        type: [String],
+    speciality:{
+        type: String,
         required: true,
     },
     dossierInit:{
@@ -35,6 +35,10 @@ const MedicSchema = new mongoose.Schema({
         type: String,
         required: true,
         match: /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,  // formatando expressão regular
+    },
+    hoursService:{
+        type: [String],
+        required: true
     },
     createdAt:{
         type: Date,

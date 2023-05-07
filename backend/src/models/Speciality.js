@@ -1,7 +1,7 @@
 const mongoose = require('../database/index'); // importando a estrutura da conexão com o MongoDb
 
 // Definindo o schema (modelo) do usuário com seus respectivos campos
-const ProcedureSchema = new mongoose.Schema({
+const SpecialitySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -11,6 +11,10 @@ const ProcedureSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
+    },
+    especializationCode: { //Codigo da especialização
+        type: String,
+        required: true,
     },
     duration: { // Adicionando duração, sociltada pelo frontend
         type: String,
@@ -28,7 +32,7 @@ const ProcedureSchema = new mongoose.Schema({
 });
 
 // Criando o modelo "User" com base no schema definido acima
-const Procedure = mongoose.model("Procedure", ProcedureSchema);
+const Speciality = mongoose.model("Speciality", SpecialitySchema);
 
 // Exportando o modelo "User" para que possa ser utilizado em outros arquivos do projeto
-module.exports = Procedure;
+module.exports = Speciality;

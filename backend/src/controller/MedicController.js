@@ -4,7 +4,7 @@ class MedicController {
 
     static async register(req, res) {
         try {
-            const {crm , cpf, email} = req.body;
+            const {crm , cpf, email, especialized, dossierInit, dossierEnd} = req.body;
 
             if (cpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
                 return res.status(400).json({
@@ -34,13 +34,37 @@ class MedicController {
                 });
             }
 
-            const medic = await MedicModel.create(req.body); //Se tudo der certo, cadastra o médico
+            async function hoursForService(start, end) {
+                const milestones = [];
+                const interval = 30; 
+                let current = new Date(start);
+              
+                while (current <= end) {
+                  const milestone = current.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                  milestones.push(milestone);
+                  current.setMinutes(current.getMinutes() + interval);
+                }
+              
+                return milestones;
+            }
+
+            medicHours = await hoursForService(dossierInit, dossierEnd);
+ 
+
+            const medicBody = await MedicModel.create(req.body); 
+            const medic =  {
+                medicBody,
+                medicHours
+            }
+
+            console.log(medic)
+            //Se tudo der certo, cadastra o médico
     
-            return res.json({
-                error: false,
-                message: "Médico cadastrado com sucesso!",
-                data: medic // Retorna o médico criado em um objeto
-            });
+            // return res.json({
+            //     error: false,
+            //     message: "Médico cadastrado com sucesso!",
+            //     data: medic // Retorna o médico criado em um objeto
+            // });
         } catch (err) { //Caso dê erro, ele retorna outro objeto de erro
             console.error(err);
             return res.status(500).json({

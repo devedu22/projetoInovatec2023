@@ -1,31 +1,31 @@
-const ProcedureModel = require('../models/Procedure')
+const SpecialityModel = require('../models/Speciality')
 
-class ProcedureController {
+class SpecialityController {
 
     static async register(req, res) {
         try {
             const { name, cod } = req.body;
             
-            if (await ProcedureModel.findOne({ cod })) {
+            if (await SpecialityModel.findOne({ cod })) {
                 return res.status(400).json({
                     error: true,
                     message: "codigo informado já vinculado à um procedimento cadastrado!"
                 });
             }
 
-            if (await ProcedureModel.findOne({ name })) {
+            if (await SpecialityModel.findOne({ name })) {
                 return res.status(400).json({
                     error: true,
                     message: "Nome informado já vinculado à um procedimento cadastrado!"
                 });
             }
 
-            const procedure = await ProcedureModel.create(req.body);
+            const procedure = await SpecialityModel.create(req.body);
     
             return res.json({
                 error: false,
                 message: "Procedimento Cadastrado com sucesso!",
-                data: procedure // Retorna o procedimento criado em um objeto
+                data: Speciality // Retorna o procedimento criado em um objeto
             });
         } catch (err) { //Caso dê erro, ele retorna outro objeto de erro
             console.error(err);
@@ -41,9 +41,9 @@ class ProcedureController {
             const { name, cod } = req.body;
 
             // busca um procedimento no banco de dados com base no name e codigo fornecidos
-            const procedure = await ProcedureModel.findOne({ cod });
+            const Speciality = await SpecialityModel.findOne({ cod });
             
-            if (!procedure) {
+            if (!Speciality) {
                 // se nenhum procedimento for encontrado, retorna uma mensagem de erro
                 return res.status(404).json({
                     error: true,
@@ -52,7 +52,7 @@ class ProcedureController {
             }
         
             // atualiza informações do procedimento no banco de dados
-            await ProcedureModel.updateOne({ cod }, { name: name });
+            await SpecialityModel.updateOne({ cod }, { name: name });
 
             return res.json({
                 error: false,
@@ -68,15 +68,14 @@ class ProcedureController {
         }
     }
 
-
     static async delete (req, res) {
         try {
             const { name, cod } = req.body;
     
             // busca um procedimento no banco de dados com base no name e codigo fornecidos
-            const procedure = await ProcedureModel.findOne({ cod });
+            const Speciality = await SpecialityModel.findOne({ cod });
     
-            if (!procedure) {
+            if (!Speciality) {
                 // se nenhum procedimento for encontrado, retorna uma mensagem de erro
                 return res.status(404).json({
                     error: true,
@@ -85,7 +84,7 @@ class ProcedureController {
             }
     
             // atualiza informações do procedimento no banco de dados
-            await ProcedureModel.deleteOne({ cod });
+            await SpecialityModel.deleteOne({ cod });
     
             return res.json({
                 error: false,
@@ -102,4 +101,4 @@ class ProcedureController {
     }
 }
 
-module.exports = ProcedureController
+module.exports = SpecialityController

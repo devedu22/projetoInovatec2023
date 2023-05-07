@@ -1,4 +1,4 @@
-const ProcedureModel = require('../models/Procedure')
+const SpecialityModel = require('../models/Speciality')
 const MedicModel = require('../models/Medic')
 const PatientModel = require('../models/Patient')
 const SchedulingModel = require('../models/Scheduling')
@@ -7,7 +7,7 @@ class SchedulingController {
 
     static async register(req, res) {
             try{
-                const {doctorCrm , patientCpf, procedureCode, appointmentDate, hourInit} = req.body;
+                const {doctorCrm , patientCpf, SpecialityCode, appointmentDate, hourInit} = req.body;
                 if (patientCpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
                     return res.status(400).json({
                         error: true,
@@ -31,9 +31,9 @@ class SchedulingController {
                     });
                 }
                 
-                const procedure = await ProcedureModel.findOne({ cod : procedureCode})
+                const Speciality = await Speciality.findOne({ cod : SpecialityCode})
 
-                if (!procedure) {
+                if (!Speciality) {
                     return res.status(400).json({
                         error: true,
                         message: "codigo informado não está vinculado à um procedimento cadastrado!"

@@ -111,7 +111,7 @@ class PatientController {
     }
 
 
-    static async registerProcedure (req, res) {
+    static async registerSpeciality (req, res) {
         try {
             const { email, cpf } = req.body;
     
