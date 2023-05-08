@@ -2,6 +2,11 @@ const mongoose = require('../database/index'); // importando a estrutura da cone
 
 // Definindo o schema (modelo) do medicamento com seus respectivos campos
 const RemedySchema = new mongoose.Schema({
+    cod: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     name: {
         type: String,
         required: true,

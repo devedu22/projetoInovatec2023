@@ -3,6 +3,7 @@ const PatientModel = require('../models/Patient');
 const SpecialityModel = require('../models/Speciality');
 const RemedyModel = require('../models/Remedy');
 const MedicModel = require('../models/Medic');
+const PrescriptionModel = require('../models/Prescription');
 
 class AdminController {
   static async getUsers(req, res) {
@@ -71,6 +72,20 @@ class AdminController {
       res.status(500).json({
         error: true,
         message: 'Ocorreu um erro ao buscar os medicos. Por favor, tente novamente mais tarde.'
+      });
+    }
+  }
+
+  static async getPrescription(req, res) {
+    try {
+      const prescription = await PrescriptionModel.find({});
+      res.status(200).json(prescription);
+
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        error: true,
+        message: 'Ocorreu um erro ao buscar os medicamentos. Por favor, tente novamente mais tarde.'
       });
     }
   }
