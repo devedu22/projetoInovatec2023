@@ -14,6 +14,7 @@ class PrescriptionController {
                     message: "Nenhuma prescrição encontrada para essa especialidade!",
                     data: prescriptions // Retorna o procedimento criado em um objeto
                 });
+                
             }
             return res.json({
                 error: false,
