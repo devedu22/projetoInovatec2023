@@ -7,6 +7,7 @@ const SpecialityController = require('../controller/SpecialityController')
 const RemedyController = require('../controller/RemedyController')
 const MedicController = require('../controller/MedicController')
 const SchedulingController = require('../controller/SchedulingController')
+const PrescriptionController = require('../controller/PrescriptionController')
 
 const routes = express.Router();
 
@@ -15,6 +16,7 @@ routes.get('/admin/patient',authMiddleware,AdminController.getPatient) //Rota pa
 routes.get('/admin/Speciality',authMiddleware,AdminController.getSpeciality) //Rota para  consulta de todos procedimentos, com token no header
 routes.get('/admin/Remedio',authMiddleware,AdminController.getRemedy) //Rota para  consulta de todos medicamentos, com token no header
 routes.get('/admin/Medico',authMiddleware,AdminController.getMedic) //Rota para  consulta de todos Medicos, com token no header
+routes.get('/admin/Prescription',authMiddleware,AdminController.getPrescription) // Rota para consulta de todos as Prescrições, com token no header
 
 routes.post('/registrarUsuario',AuthController.register) //Rota para criar usuario
 routes.post('/logarUsuario',AuthController.authenticate)// Rota de autenticação
@@ -29,7 +31,6 @@ routes.put('/atualizarEspecialidade',SpecialityController.update) //Rota para at
 routes.delete('/deletarEspecialidade',SpecialityController.delete) //Rota para atualizar procedimento
 routes.post('/buscarMedicos',SpecialityController.findDoctorBySpeciality) //Rota para atualizar procedimento
 
-
 routes.post('/registrarRemedio',RemedyController.register) //Rota para criar medicamento
 routes.put('/atualizarRemedio',RemedyController.update) //Rota para atualizar medicamento
 routes.delete('/deletarRemedio',RemedyController.delete) //Rota para atualizar medicamento
@@ -42,5 +43,9 @@ routes.delete('/deletarMedico',MedicController.delete) //Rota para atualizar Med
 routes.post('/listSchedule',SchedulingController.verifyScheduleDoctor) 
 routes.post('/createScheduling',SchedulingController.register)
 routes.post('/filterSchedule',SchedulingController.filterHoursDoctor)
+
+routes.post('/registrarPrescrição',PrescriptionController.register)
+routes.put('/atualizarPrescrição',PrescriptionController.update)
+routes.delete('/deletarPrescrição',PrescriptionController.delete)
 
 module.exports = routes;

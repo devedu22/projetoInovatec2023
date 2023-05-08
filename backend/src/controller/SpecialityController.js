@@ -97,7 +97,7 @@ class SpecialityController {
 
     static async delete (req, res) {
         try {
-            const { name, cod } = req.body;
+            const { cod } = req.body;
     
             // busca um procedimento no banco de dados com base no name e codigo fornecidos
             const Speciality = await SpecialityModel.findOne({ cod });
