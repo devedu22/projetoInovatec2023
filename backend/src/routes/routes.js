@@ -8,6 +8,7 @@ const RemedyController = require('../controller/RemedyController')
 const MedicController = require('../controller/MedicController')
 const SchedulingController = require('../controller/SchedulingController')
 const PrescriptionController = require('../controller/PrescriptionController')
+const RecipeController = require('../controller/RecipeController')
 
 const routes = express.Router();
 
@@ -16,7 +17,8 @@ routes.get('/admin/patient',authMiddleware,AdminController.getPatient) //Rota pa
 routes.get('/admin/Speciality',authMiddleware,AdminController.getSpeciality) //Rota para  consulta de todos procedimentos, com token no header
 routes.get('/admin/Remedio',authMiddleware,AdminController.getRemedy) //Rota para  consulta de todos medicamentos, com token no header
 routes.get('/admin/Medico',authMiddleware,AdminController.getMedic) //Rota para  consulta de todos Medicos, com token no header
-routes.get('/admin/Prescription',authMiddleware,AdminController.getPrescription) // Rota para consulta de todos as Prescrições, com token no header
+routes.get('/admin/Recipe',authMiddleware,AdminController.getRecipe) //Rota para consulta de todas as receitas, com token no header
+routes.get('/admin/Prescription',authMiddleware,AdminController.getPrescription) // Rota para consulta de todas as Prescrições, com token no header
 
 routes.post('/registrarUsuario',AuthController.register) //Rota para criar usuario
 routes.post('/logarUsuario',AuthController.authenticate)// Rota de autenticação
@@ -38,6 +40,9 @@ routes.delete('/deletarRemedio',RemedyController.delete) //Rota para atualizar m
 routes.post('/registrarMedico',MedicController.register) //Rota para criar Medico
 routes.put('/atualizarMedico',MedicController.update) //Rota para atualizar Medico
 routes.delete('/deletarMedico',MedicController.delete) //Rota para atualizar Medico
+
+// Recipes
+routes.post('/registrarReceita',RecipeController.register)
 
 // Scheduling
 routes.post('/listSchedule',SchedulingController.verifyScheduleDoctor) 

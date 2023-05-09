@@ -3,6 +3,7 @@ const PatientModel = require('../models/Patient');
 const SpecialityModel = require('../models/Speciality');
 const RemedyModel = require('../models/Remedy');
 const MedicModel = require('../models/Medic');
+const RecipeModel = require ('../models/Recipe');
 const PrescriptionModel = require('../models/Prescription');
 
 class AdminController {
@@ -85,7 +86,21 @@ class AdminController {
       console.error(error);
       res.status(500).json({
         error: true,
-        message: 'Ocorreu um erro ao buscar os medicamentos. Por favor, tente novamente mais tarde.'
+        message: 'Ocorreu um erro ao buscar as Prescrições. Por favor, tente novamente mais tarde.'
+      });
+    }
+  }
+
+  static async getRecipe(req, res) {
+    try {
+      const recipe = await RecipeModel.find({});
+      res.status(200).json(recipe);
+
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({
+        error: true,
+        message: 'Ocorreu um erro ao buscar as Receitas. Por favor, tente novamente mais tarde.'
       });
     }
   }

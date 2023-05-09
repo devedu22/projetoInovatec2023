@@ -95,7 +95,6 @@ class RemedyController {
         }
     }
 
-
 }
 
 module.exports = RemedyController

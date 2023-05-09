@@ -8,7 +8,7 @@ class RecipeController{
     
     static async register(req, res) {
         try{
-            const {doctorCrm , patientCpf,remedies, emitionDate} = req.body;
+            const {doctorCrm , patientCpf, remedies, emitionDate} = req.body;
             if (patientCpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
                 return res.status(400).json({
                     error: true,
@@ -37,13 +37,12 @@ class RecipeController{
                     return res.json({
                         error: false,
                         message: "Receita cadastrado com sucesso!",
-                        data: recipe // Retorna o Agendamento criado em um objeto
+                        data: recipe 
                     });   
                 }
-
                 return res.status(400).json({
                     error:true,
-                    message:"Scheduling already exists!",
+                    message:"Receita já cadastrada!",
                     data: recipeExisting
                 });
 
@@ -51,8 +50,21 @@ class RecipeController{
                 return res.status(500).json({
                     error: true,
                     message: "Ocorreu um erro ao cadastrar os dados da Receita. Por favor, verifique novamente os campos."
-                })
+                });
             }
+        }
+
+        static async list (req, res) {
+            try {
+                const remedies = await RemedyModel.find();
+            }catch (err){
+                console.error(err);
+                return res.status(500).json({
+                    error: true,
+                    message: 'Ocorreu um erro ao listar os Medicamentos. Por favor, tente novamente mais tarde.',
+                });
+            }
+
         }
     }
 
