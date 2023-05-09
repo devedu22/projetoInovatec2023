@@ -8,7 +8,9 @@ class RecipeController{
     
     static async register(req, res) {
         try{
+
             const {doctorCrm , patientCpf, remedies, emitionDate} = req.body;
+
             if (patientCpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
                 return res.status(400).json({
                     error: true,
