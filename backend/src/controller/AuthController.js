@@ -2,7 +2,6 @@ const UserModel = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const authConig = require('../config/auth.json')
-const User = require('../models/User') //talvez não precise mais
 
 class AuthController {
 
@@ -35,7 +34,7 @@ class AuthController {
             }
 
             // Adicionando validador de nível de acesso do usuário
-            if (!["ADM", "USR", "MED"].includes(acessLevel)){ 
+            if (!["ADM", "USR", "MED"].includes(accessLevel)){ // Corrigido a pedido do Carleson Kalebe - FrontEnd
                 return res.status(400).json({
                     error: true,
                     message: "Erro ao cadastrar usuário. O nível de acesso deve ser Administrador(ADM), Usuário(USR) ou Médico(MED)"
