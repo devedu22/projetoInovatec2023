@@ -3,6 +3,7 @@ const DoctorModel = require('../models/Medic')
 
 class SpecialityController {
     static async findDoctorBySpeciality(req,res){
+        
         try {
             const { cod } = req.body;
             const medics = await DoctorModel.find({ speciality : cod });

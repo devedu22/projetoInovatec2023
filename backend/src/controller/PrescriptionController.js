@@ -1,4 +1,4 @@
-const PrescriptionModel = require('../models/Prescription')
+const PrescriptionModel = require('../models/Prescription');
 
 class PrescriptionController {
 
@@ -31,29 +31,40 @@ class PrescriptionController {
     }
 
 
-    static async register (req,res){
-        try{
-            const {cod, name} = req.body;
-    
-            if (await SpecialityModel.findOne({ cod })) {
+    static async register(req, res) {
+        try {
+            const { name, cod } = req.body;
+            
+            if (await PrescriptionModel.findOne({ cod })) {
                 return res.status(400).json({
                     error: true,
                     message: "codigo informado já vinculado à um procedimento cadastrado!"
                 });
             }
-            if (await SpecialityModel.findOne({ name })) {
+
+            if (await PrescriptionModel.findOne({ name })) {
                 return res.status(400).json({
                     error: true,
                     message: "Nome informado já vinculado à um procedimento cadastrado!"
                 });
-            }  
-            }catch(err){
-                return res.status(500).json({
-                    error: true,
-                    message: "Erro interno do servidor."
-                });
             }
+
+            const Prescription = await PrescriptionModel.create(req.body);
+    
+            return res.json({
+                error: false,
+                message: "Prescrição Cadastrado com sucesso!",
+                data: Prescription // Retorna o procedimento criado em um objeto
+            });
+
+        } catch (err) { //Caso dê erro, ele retorna outro objeto de erro
+            console.error(err);
+            return res.status(500).json({
+                error: true,
+                message: "Ocorreu um erro ao cadastrar a prescrição. Por favor, verifique novamente os campos."
+            });
         }
+    }
 
         static async update(req, res) {
             try {
@@ -64,7 +75,7 @@ class PrescriptionController {
                 if (!Prescription) {
                     return res.status(404).json({
                         error: true,
-                        message: 'Prescrição não encontrado. Verifique o nome e código informado e tente novamente.'
+                        message: 'Prescrição não encontrada. Verifique o nome e código informado e tente novamente.'
                     });
                 }
             
@@ -94,7 +105,7 @@ class PrescriptionController {
                 if(!Prescription){
                     return res.status(404).json({
                         error: true,
-                        message: 'Prescrição não encontrado. Verifique o nome e código informado e tente novamente.'
+                        message: 'Prescrição não encontrada. Verifique o nome e código informado e tente novamente.'
                     });
                 }
 

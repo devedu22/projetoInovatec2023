@@ -56,18 +56,6 @@ class RecipeController{
             }
         }
 
-        static async list (req, res) {
-            try {
-                const remedies = await RemedyModel.find();
-            }catch (err){
-                console.error(err);
-                return res.status(500).json({
-                    error: true,
-                    message: 'Ocorreu um erro ao listar os Medicamentos. Por favor, tente novamente mais tarde.',
-                });
-            }
-
-        }
     }
 
     module.exports = RecipeController

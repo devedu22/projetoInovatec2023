@@ -16,10 +16,10 @@ const routes = express.Router();
 routes.get('/admin/usuarios',authMiddleware,AdminController.getUsers) //Rota para  consulta de todos usuarios, com token no header
 routes.get('/admin/patient',authMiddleware,AdminController.getPatient) //Rota para  consulta de todos pacientes, com token no header
 routes.get('/admin/Speciality',authMiddleware,AdminController.getSpeciality) //Rota para  consulta de todos procedimentos, com token no header
-routes.get('/admin/Remedio',authMiddleware,AdminController.getRemedy) //Rota para  consulta de todos medicamentos, com token no header
+routes.get('/admin/Remedio',AdminController.getRemedy) //Rota para  consulta de todos medicamentos, com token no header
 routes.get('/admin/Medico',authMiddleware,AdminController.getMedic) //Rota para  consulta de todos Medicos, com token no header
 routes.get('/admin/Recipe',authMiddleware,AdminController.getRecipe) //Rota para consulta de todas as receitas, com token no header
-routes.get('/admin/Prescription',authMiddleware,AdminController.getPrescription) // Rota para consulta de todas as Prescrições, com token no header
+routes.get('/admin/Prescription',AdminController.getPrescription) // Rota para consulta de todas as Prescrições, com token no header
 
 routes.post('/registrarUsuario',AuthController.register) //Rota para criar usuario
 routes.post('/logarUsuario',AuthController.authenticate)// Rota de autenticação
@@ -50,8 +50,8 @@ routes.post('/listSchedule',SchedulingController.verifyScheduleDoctor)
 routes.post('/createScheduling',SchedulingController.register)
 routes.post('/filterSchedule',SchedulingController.filterHoursDoctor)
 
-routes.post('/registrarPrescrição',PrescriptionController.register)
-routes.put('/atualizarPrescrição',PrescriptionController.update)
-routes.delete('/deletarPrescrição',PrescriptionController.delete)
+routes.post('/registrarPrescricao',PrescriptionController.register)
+routes.put('/atualizarPrescricao',PrescriptionController.update)
+routes.delete('/deletarPrescricao',PrescriptionController.delete)
 
 module.exports = routes;

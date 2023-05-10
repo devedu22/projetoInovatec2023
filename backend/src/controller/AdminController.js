@@ -78,9 +78,10 @@ class AdminController {
   }
 
   static async getPrescription(req, res) {
+    
     try {
-      const prescription = await PrescriptionModel.find({});
-      res.status(200).json(prescription);
+      const Prescription = await PrescriptionModel.find({});
+      res.status(200).json(Prescription);
 
     } catch (error) {
       console.error(error);
