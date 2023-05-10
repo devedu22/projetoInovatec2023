@@ -7,7 +7,7 @@ class AuthController {
 
     static async register(req, res) {
         try {
-            const { email, cpf, acessLevel } = req.body;
+            const { email, cpf, accessLevel } = req.body;
     
             // Validando CPF
             if (cpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
