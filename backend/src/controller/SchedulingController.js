@@ -29,6 +29,31 @@ class SchedulingController {
         }
     }
 
+    static async listSchedulesByDay(req, res){
+        try{
+            const { appointmentDate } = req.body;
+            const scheduling = await SchedulingModel.find({ appointmentDate })
+
+            if (scheduling.length == 0) {
+                return res.status(400).json({
+                    error: true,
+                    message: "Agenda Vazia para esse dia!"
+                });
+            }
+            return res.status(200).json({
+                error: false,
+                message: "Agenda:",
+                data:scheduling
+            })
+        }catch{
+            console.error(err);
+            return res.status(500).json({
+                error: true,
+                message: "Ocorreu um erro ao buscar a agenda do médico solicitado. Por favor, verifique novamente os campos."
+            });
+        }
+    }
+
     static async filterHoursDoctor(req, res){
         try{
             const { doctorCrm, appointmentDate } = req.body;

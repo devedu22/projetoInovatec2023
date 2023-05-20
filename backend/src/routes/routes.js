@@ -47,6 +47,7 @@ routes.post('/registrarReceita',RecipeController.register)
 
 // Scheduling
 routes.post('/listSchedule',SchedulingController.verifyScheduleDoctor) 
+routes.post('/listSchedulesByDay',SchedulingController.listSchedulesByDay) 
 routes.post('/createScheduling',SchedulingController.register)
 routes.post('/filterSchedule',SchedulingController.filterHoursDoctor)
 
