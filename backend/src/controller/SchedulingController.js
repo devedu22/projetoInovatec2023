@@ -42,7 +42,7 @@ class SchedulingController {
             }
             return res.status(200).json({
                 error: false,
-                message: "Agenda:",
+                message: "Agenda do dia:",
                 data:scheduling
             })
         }catch{
