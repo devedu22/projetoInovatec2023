@@ -65,8 +65,8 @@ class MedicController {
 
                 while (current <= final) {
                   const milestone = current.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}, { hour12: false });
-                  let milestone_formated = convertTo24Hour(milestone)
-                  milestones.push(milestone_formated);
+                  //let milestone_formated = convertTo24Hour(milestone)
+                  milestones.push(milestone);
                   current.setMinutes(current.getMinutes() + interval);
                 }
                 return milestones;
