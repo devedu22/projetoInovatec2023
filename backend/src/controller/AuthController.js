@@ -123,7 +123,7 @@ class AuthController {
             name: user.name,
             cpf: user.cpf
         }, authConig.secret, {
-            expiresIn: 600 // O token é válido por 10 minutos (600 segundos)
+            expiresIn: "5h" // O token é válido por 5 horas
         })
 
         return res.json({ // Retorna usuario
