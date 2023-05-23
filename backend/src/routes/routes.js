@@ -10,7 +10,6 @@ const SchedulingController = require('../controller/SchedulingController')
 const PrescriptionController = require('../controller/PrescriptionController')
 const RecipeController = require('../controller/RecipeController')
 
-
 const routes = express.Router();
 
 routes.get('/admin/usuarios',authMiddleware,AdminController.getUsers) //Rota para  consulta de todos usuarios, com token no header

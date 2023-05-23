@@ -9,7 +9,7 @@ class RecipeController{
     static async register(req, res) {
         try{
 
-            const {doctorCrm , patientCpf, remedies, emitionDate} = req.body;
+            const {doctorCrm , patientCpf, emitionDate} = req.body;
 
             if (patientCpf.length !== 11) { // Verifica se o CPF informado tem 11 caracteres
                 return res.status(400).json({
@@ -24,7 +24,7 @@ class RecipeController{
                         message: "CPF informado não está vinculado à um usuário cadastrado!"
                     });
                 }
-            const medic = await DoctorModel.findOne({ cpf : doctorCrm })
+            const medic = await DoctorModel.findOne({ crm : doctorCrm })
                 if (!medic) {
                     return res.status(400).json({
                         error: true,
@@ -32,10 +32,11 @@ class RecipeController{
                     });
                 }
 
-            const recipeExisting = await RecipeModel.findOne({ doctorCrm, patientCpf, emitionDate })
+            const recipeExisting = await RecipeModel.findOne({ doctorCrm : doctorCrm, patientCpf : patientCpf, emitionDate : emitionDate })
 
                 if (!recipeExisting) {
                     const recipe = await RecipeModel.create(req.body); 
+                    console.log(recipe)
                     return res.json({
                         error: false,
                         message: "Receita cadastrado com sucesso!",
@@ -45,10 +46,10 @@ class RecipeController{
                 return res.status(400).json({
                     error:true,
                     message:"Receita já cadastrada!",
-                    data: recipeExisting
                 });
 
             }catch(err){
+                console.log(err)
                 return res.status(500).json({
                     error: true,
                     message: "Ocorreu um erro ao cadastrar os dados da Receita. Por favor, verifique novamente os campos."
