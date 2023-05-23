@@ -54,41 +54,73 @@ class SchedulingController {
         }
     }
 
-    static async filterHoursDoctor(req, res){
-        try{
-            const { doctorCrm, appointmentDate } = req.body;
-
-            const schedule = await SchedulingModel.find({ doctorCrm, appointmentDate })
-            const medic = await DoctorModel.findOne({ crm : doctorCrm})
-            
-            console.log(schedule)
-
-            let  newList = [];
-            for (let i = 0; i < schedule.length; i++) {
-                let hourExcluir = schedule[i].hourInit;
-                newList = medic.hoursService.filter(function(hora) {
-                    return hora !== hourExcluir;})
-              }
-            
-            const medicResponse = {
-                crm: medic.crm,
-                name: medic.name,
-                hours: newList
-            }
-            
-            return res.status(200).json({
-                error: false,
-                message: "Horarios livres:",
-                data:medicResponse
-            })
-        }catch(err){
-            console.error(err);
-            return res.status(500).json({
-                error: true,
-                message: "Ocorreu um erro ao buscar a agenda do médico solicitado. Por favor, verifique novamente os campos."
-            });
+    static async filterHoursDoctor(req, res) {
+        try {
+          const { doctorCrm, appointmentDate } = req.body;
+      
+          const schedule = await SchedulingModel.find({ doctorCrm, appointmentDate });
+          const medic = await DoctorModel.findOne({ crm: doctorCrm });
+      
+          console.log(schedule);
+      
+          let occupiedHours = schedule.map((appointment) => appointment.hourInit);
+          let availableHours = medic.hoursService.filter((hour) => !occupiedHours.includes(hour));
+      
+          const medicResponse = {
+            crm: medic.crm,
+            name: medic.name,
+            hours: availableHours,
+          };
+      
+          return res.status(200).json({
+            error: false,
+            message: "Horários livres:",
+            data: medicResponse,
+          });
+        } catch (err) {
+          console.error(err);
+          return res.status(500).json({
+            error: true,
+            message: "Ocorreu um erro ao buscar a agenda do médico solicitado. Por favor, verifique novamente os campos.",
+          });
         }
-    }
+      }
+
+    // static async filterHoursDoctor(req, res){
+    //     try{
+    //         const { doctorCrm, appointmentDate } = req.body;
+
+    //         const schedule = await SchedulingModel.find({ doctorCrm, appointmentDate })
+    //         const medic = await DoctorModel.findOne({ crm : doctorCrm})
+            
+    //         console.log(schedule)
+
+    //         let  newList = [];
+    //         for (let i = 0; i < schedule.length; i++) {
+    //             let hourExcluir = schedule[i].hourInit;
+    //             newList = medic.hoursService.filter(function(hora) {
+    //                 return hora !== hourExcluir;})
+    //           }
+            
+    //         const medicResponse = {
+    //             crm: medic.crm,
+    //             name: medic.name,
+    //             hours: newList
+    //         }
+            
+    //         return res.status(200).json({
+    //             error: false,
+    //             message: "Horarios livres:",
+    //             data:medicResponse
+    //         })
+    //     }catch(err){
+    //         console.error(err);
+    //         return res.status(500).json({
+    //             error: true,
+    //             message: "Ocorreu um erro ao buscar a agenda do médico solicitado. Por favor, verifique novamente os campos."
+    //         });
+    //     }
+    // }
 
     static async register(req, res) {
             try{
