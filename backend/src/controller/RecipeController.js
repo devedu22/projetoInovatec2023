@@ -24,7 +24,7 @@ class RecipeController{
               });
 
               const { destinatario, assunto, corpo, remedies } = req.body;
-
+              const str_remedies = remedies.join(', ')
               const mailOptions = {
                 from: user_email,
                 to: destinatario,
@@ -57,7 +57,7 @@ class RecipeController{
                         <h1>Receita Médica</h1>
                         <p> ${corpo} </p>
                         <p>Estes são os remédios indicados para o seu tratamento:</p>
-                        <p><strong> ${remedies} </strong></p>
+                        <p><strong> ${str_remedies} </strong></p>
                     </div>
                   </body>
                 </html>
