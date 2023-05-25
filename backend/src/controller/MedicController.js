@@ -58,6 +58,10 @@ class MedicController {
                 let dateInit = "2000-01-01" + " "+ start + ":" + "00"
                 let dateEnd = "2000-01-01" + " "+ end + ":" + "00"
 
+                if(start > end){
+                    dateEnd = "2000-01-02" + " "+ end + ":" + "00"
+                }
+
                 const milestones = [];
                 const interval = 15; 
                 let current = new Date(dateInit);

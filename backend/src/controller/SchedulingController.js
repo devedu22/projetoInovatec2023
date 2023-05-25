@@ -61,8 +61,6 @@ class SchedulingController {
           const schedule = await SchedulingModel.find({ doctorCrm, appointmentDate });
           const medic = await DoctorModel.findOne({ crm: doctorCrm });
       
-          console.log(schedule);
-      
           let occupiedHours = schedule.map((appointment) => appointment.hourInit);
           let availableHours = medic.hoursService.filter((hour) => !occupiedHours.includes(hour));
       
